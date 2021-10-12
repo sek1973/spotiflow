@@ -6,6 +6,10 @@
       "auth": [
         "dist/auth/auth",
         "dist/auth"
+      ],
+      "views": [
+        "dist/views/views",
+        "dist/views"
       ]
     },
     "baseUrl": "./",
