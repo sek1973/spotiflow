@@ -1,15 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { AuthParamConfig } from '../model/auth-param-config';
-
-const config: AuthParamConfig = {
-  response_type: 'token',
-  client_id: '',
-  scope: [],
-  redirect_uri: '',
-  state: '',
-  show_dialog: true
-};
+import { SPOTIFY_AUTH_CONFIG } from '../private-config';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +21,8 @@ export class SpotifyAuthService {
 
   private createParams(): string[] {
     const result = [];
-    for (const [key, val] of Object.entries(config)) {
+    SPOTIFY_AUTH_CONFIG.redirect_uri = this.document.URL;
+    for (const [key, val] of Object.entries(SPOTIFY_AUTH_CONFIG)) {
       if (Array.isArray(val)) {
         result.push(`${key}=${(val as string[]).join(' ')}`);
       } else {

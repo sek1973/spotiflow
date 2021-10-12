@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotifyAuthService } from 'projects/auth/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'main';
+
+  constructor(private authService: SpotifyAuthService) { }
+
+  onClick(): void {
+    this.authService.login();
+  }
 }
