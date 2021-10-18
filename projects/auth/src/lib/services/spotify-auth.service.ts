@@ -21,7 +21,7 @@ export class SpotifyAuthService {
 
   private createParams(): string[] {
     const result = [];
-    SPOTIFY_AUTH_CONFIG.redirect_uri = this.document.URL;
+    SPOTIFY_AUTH_CONFIG.redirect_uri = 'http://localhost:4200/spotify'; // this.document.URL
     for (const [key, val] of Object.entries(SPOTIFY_AUTH_CONFIG)) {
       if (Array.isArray(val)) {
         result.push(`${key}=${(val as string[]).join(' ')}`);
