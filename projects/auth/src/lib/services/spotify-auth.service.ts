@@ -74,12 +74,9 @@ export class SpotifyAuthService {
   }
 
   private generateCodeVerifier(): string {
-    const array = new Uint8Array(32);
-    crypto.getRandomValues(array);
-    return btoa(String.fromCharCode(...array))
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_')
-      .replace(/=/g, '');
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const values = crypto.getRandomValues(new Uint8Array(64));
+    return values.reduce((acc: string, x: number) => acc + possible[x % possible.length], '');
   }
 
   private async generateCodeChallenge(verifier: string): Promise<string> {
