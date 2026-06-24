@@ -1,0 +1,25 @@
+<div class="playlists-container">
+    <h1>My Playlists</h1>
+
+    <p *ngIf="loading">Loading playlists...</p>
+    <p *ngIf="error">{{ error }}</p>
+
+    <ul *ngIf="!loading && !error"
+        class="playlist-list">
+        <li *ngFor="let playlist of playlists"
+            class="playlist-item">
+            <a [href]="playlist.external_urls.spotify"
+               target="_blank"
+               rel="noopener noreferrer">
+                <img *ngIf="playlist.images.length > 0"
+                     [src]="playlist.images[0].url"
+                     [alt]="playlist.name"
+                     class="playlist-image" />
+                <div class="playlist-info">
+                    <span class="playlist-name">{{ playlist.name }}</span>
+                    <span class="playlist-tracks">{{ playlist.tracks.total }} tracks</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

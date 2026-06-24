@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SpotifyComponent } from './components/spotify/spotify.component';
 import { SpotifyLoginComponent } from './components/spotify-login/spotify-login.component';
+import { PlaylistsComponent } from './components/playlists/playlists.component';
 
 @NgModule({
   declarations: [
     SpotifyComponent,
-    SpotifyLoginComponent
+    SpotifyLoginComponent,
+    PlaylistsComponent
   ],
   imports: [
+    CommonModule
   ],
   exports: [
-    SpotifyComponent
+    SpotifyComponent,
+    PlaylistsComponent
   ]
 })
 export class ViewsModule { }

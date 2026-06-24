@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'projects/auth/src/public-api';
-import { SpotifyComponent, SpotifyLoginComponent } from 'projects/views/src/public-api';
+import { SpotifyComponent, SpotifyLoginComponent, PlaylistsComponent } from 'projects/views/src/public-api';
 
 const routes: Routes = [
   {
@@ -14,9 +14,13 @@ const routes: Routes = [
     component: SpotifyLoginComponent
   },
   {
-    canActivate: [AuthGuard],
     path: 'spotify',
     component: SpotifyComponent
+  },
+  {
+    path: 'playlists',
+    component: PlaylistsComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
